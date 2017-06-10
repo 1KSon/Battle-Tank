@@ -23,7 +23,7 @@ public:
 
 private:
 
-	virtual void Tick(float DeltaSeconds) override;
+	virtual void Tick(float DeltaTime) override;
 	
 	
 };
