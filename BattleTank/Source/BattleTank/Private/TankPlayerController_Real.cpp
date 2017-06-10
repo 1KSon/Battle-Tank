@@ -32,5 +32,18 @@ ATank* ATankPlayerController_Real::GetControlledTank() const
 void ATankPlayerController_Real::AimTowardsCrosshair()
 {
 	if (!GetControlledTank()) { return; }
+	FVector OutHitLocation;
+	if (GetSightRayHitLocation(OutHitLocation))
+	{
+		//UE_LOG(LogTemp, Warning, TEXT("HitLocation: %s"), *OutHitLocation.ToString());
+	}
 }
 
+bool ATankPlayerController_Real::GetSightRayHitLocation(FVector& OutHitLocation) const
+{
+	int32 ViewportSizeX, ViewportSizeY;
+	GetViewportSize(ViewportSizeX, ViewportSizeY);
+	auto ScreenLocation = FVector2D(ViewportSizeX * CrosshairXLocation, ViewportSizeY * CrosshairYLocation);
+	UE_LOG(LogTemp, Warning, TEXT("ScreenLocation: %s"), *ScreenLocation.ToString());
+	return true;
+}
